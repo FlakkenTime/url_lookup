@@ -25,5 +25,9 @@ Basic HTTP for testing: `gunicorn src.lookup:app`
 HTTPS: `gunicorn --certfile=server.crt --keyfile=server.key src.lookup:app`
 
 ## Direct testing
-`curl localhost:8000/urlinfo/1/your_URL_here`
+1. simple query: `curl localhost:8000/urlinfo/1/your_URL_here`
+2. db update:
 
+```
+curl -XPOST -H "Content-Typ-d '{"PASS":"FAKE","urls":"test1,test2"}' http://127.0.0.1:8000/urlupdate/1/
+```
