@@ -5,9 +5,10 @@ This is a Proof of Concept for a URL Lookup service. It accepts a URL and checks
 to see if it is black listed.
 
 ## Install
-pip install mysqlclient
-pip install flask
-pip install gunicorn
+pip3 install mysqlclient
+pip3 install flask
+pip3 install gunicorn
+pip3 install pytest
 
 ## Run it
 1. gunicorn src.lookup:app
