@@ -31,3 +31,15 @@ HTTPS: `gunicorn --certfile=server.crt --keyfile=server.key src.lookup:app`
 ```
 curl -XPOST -H "Content-Typ-d '{"PASS":"FAKE","urls":"test1,test2"}' http://127.0.0.1:8000/urlupdate/1/
 ```
+
+## Unit testing.
+This currently takes some manual setup. I'd add a bash script that would do the setup
+and teardown if I had more time.
+
+1. Test db setup from commandline: `mysql -u user_name -p < tests/db_setup.sql`
+2. In `resources/db.ini` set `Connect`, `User`, and `Password`.
+3. In `resource/db.ini` set `Database_Name = url_lookup_testing`
+4. In `resource/db.ini` set `Update_pass = testing_pass`
+5. Start your service: `gunicorn src.url_lookup:app`
+6. pytest
+7. Cleanup: `mysql -u user_name -p < tests/db_cleanup.sql
