@@ -44,4 +44,4 @@ and teardown if I had more time.
 4. In `resource/db.ini` set `Update_pass = testing_pass`
 5. Start your service: `gunicorn src.url_lookup:app`
 6. pytest
-7. Cleanup: `mysql -u user_name -p < tests/db_cleanup.sql
+7. Cleanup: `mysql -u user_name -p < tests/db_cleanup.sql`
