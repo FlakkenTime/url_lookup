@@ -6,6 +6,7 @@ import random
 import requests
 from configparser import ConfigParser
 
+
 class TestLookup(object):
 
     def setup(self):
@@ -37,8 +38,11 @@ class TestLookup(object):
         """
         # add a new url
         random_url = 'test_update_%d' % random.randint(1, 1000)
-        payload = {'PASS': self.config['Database']['Update_Pass'], 'urls': random_url}
-        response = requests.post(self.url_post, data=json.dumps(payload), headers=self.headers)
+        payload = {'PASS': self.config['Database']['Update_Pass'],
+                   'urls': random_url}
+        response = requests.post(self.url_post,
+                                 data=json.dumps(payload),
+                                 headers=self.headers)
         assert response.status_code == 200
         assert response.content.decode('utf-8') == 'True'
 
@@ -52,7 +56,9 @@ class TestLookup(object):
         Test update with bad password
         """
         payload = {'PASS': 'tater tots', 'urls': 'failed'}
-        response = requests.post(self.url_post, data=json.dumps(payload), headers=self.headers)
+        response = requests.post(self.url_post,
+                                 data=json.dumps(payload),
+                                 headers=self.headers)
         assert response.status_code == 200
         assert response.content.decode('utf-8') == 'False'
 
@@ -63,14 +69,16 @@ class TestLookup(object):
 
     def test_no_pass(self):
         payload = {'urls': 'failed'}
-        response = requests.post(self.url_post, data=json.dumps(payload), headers=self.headers)
+        response = requests.post(self.url_post,
+                                 data=json.dumps(payload),
+                                 headers=self.headers)
         assert response.status_code == 200
         assert response.content.decode('utf-8') == 'False no pass provided'
 
     def test_no_urls(self):
         payload = {'PASS': 'failed'}
-        response = requests.post(self.url_post, data=json.dumps(payload), headers=self.headers)
+        response = requests.post(self.url_post,
+                                 data=json.dumps(payload),
+                                 headers=self.headers)
         assert response.status_code == 200
         assert response.content.decode('utf-8') == 'False no urls provided'
-
-
