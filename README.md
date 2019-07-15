@@ -12,7 +12,8 @@ pip3 install pytest
 pip3 install configparser
 
 ## Run it
-1. gunicorn src.lookup:app
+Basic HTTP for testing: `gunicorn src.lookup:app`
+HTTPS: `gunicorn --certfile=server.crt --keyfile=server.key src.lookup:app`
 
 ## Direct testing
 `curl localhost:8000/urlinfo/1/your_URL_here`
