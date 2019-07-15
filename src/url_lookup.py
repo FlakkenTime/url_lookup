@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+This is the web app for url_lookup.
+It can be used for checking if a URL is allowed
+and updating the database.
+See README for setup and usage instructions
+"""
 
 import MySQLdb
 from configparser import ConfigParser
@@ -97,6 +103,9 @@ def update_helper(urls):
 
 @app.route("/urlupdate/1/", methods=['POST'])
 def url_update():
+    """
+    Used for pushing new urls to the database
+    """
     # Pull the json and verify password
     json = request.get_json()
     if json['PASS'] != config['Database']['Update_Pass']:
