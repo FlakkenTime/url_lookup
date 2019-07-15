@@ -29,8 +29,10 @@ def check_helper(test):
                          config['Database']['Database_Name'])
     cursor = db.cursor()
     cursor.execute("SELECT * FROM testing WHERE url = %s LIMIT 1", [test])
+    result = cursor.fetchone()
+    db.close()
 
-    if cursor.fetchone() is None:
+    if result is None:
         # Allow this request
         return 'True'
     else:
