@@ -106,11 +106,22 @@ def url_update():
     """
     Used for pushing new urls to the database
     """
-    # Pull the json and verify password
+    # Pull the json and verify input
     json = request.get_json()
-    if json['PASS'] != config['Database']['Update_Pass']:
+    if json is None:
+       return "False no parameters provided", 200
+
+    elif json.get('PASS', None) is None:
+        return "False no pass provided", 200
+
+    elif json.get('urls', None) is None:
+        return "False no urls provided", 200
+
+    elif json['PASS'] != config['Database']['Update_Pass']:
+        # don't tell them bad pass
         return "False", 200
 
+    # add the URL
     result = update_helper(json['urls'])
     if result[0] is True:
         return "True", 200
