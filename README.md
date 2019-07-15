@@ -31,7 +31,7 @@ HTTPS: `gunicorn --certfile=server.crt --keyfile=server.key src.lookup:app`
 2. db update:
 
 ```
-curl -XPOST -H "Content-Typ-d '{"PASS":"FAKE","urls":"test1,test2"}' http://127.0.0.1:8000/urlupdate/1/
+curl -XPOST -H "Content-Type: application/json" -d '{"PASS":"FAKE","urls":"test1,test2"}' http://127.0.0.1:8000/urlupdate/1/
 ```
 
 ## Unit testing.
