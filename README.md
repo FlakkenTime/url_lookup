@@ -19,7 +19,7 @@ pip3 install pytest
 
 ## Config
 1. Set your DB config info in `resources/db.ini`
-2. If wanted can further customize gunicorn in `resources.config.py`
+2. If wanted can further customize gunicorn in `resources/config.py`
 
 ## Run it
 Basic HTTP for testing: `gunicorn src.lookup:app`
