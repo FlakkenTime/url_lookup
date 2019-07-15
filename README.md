@@ -13,6 +13,7 @@ pip3 install configparser
 
 ## Run it
 Basic HTTP for testing: `gunicorn src.lookup:app`
+
 HTTPS: `gunicorn --certfile=server.crt --keyfile=server.key src.lookup:app`
 
 ## Direct testing
