@@ -11,6 +11,10 @@ pip3 install gunicorn
 pip3 install pytest
 pip3 install configparser
 
+## Config
+1. Set your DB config info in `resources/db.ini`
+2. If wanted can further customize gunicorn in `resources.config.py`
+
 ## Run it
 Basic HTTP for testing: `gunicorn src.lookup:app`
 
