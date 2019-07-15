@@ -11,14 +11,15 @@ config.read('resources/db.ini')
 
 app = Flask(__name__)
 
+
 def db_connect():
     """
     Helper function that connects and returns a db connection
     """
     db = MySQLdb.connect(config['Database']['Connect'],
-                          config['Database']['User'],
-                          config['Database']['Password'],
-                          config['Database']['Database_Name'])
+                         config['Database']['User'],
+                         config['Database']['Password'],
+                         config['Database']['Database_Name'])
     return db
 
 
@@ -41,6 +42,7 @@ def check_helper(test):
         # block
         return 'False'
 
+
 @app.route("/urlinfo/1/<path:test>", methods=['GET'])
 def url_lookup(test):
     """
@@ -54,6 +56,7 @@ def url_lookup(test):
     result = check_helper(test)
     return Response(result), 200
 
+
 def update_helper(urls):
     """
     Pushes url updates to DB
@@ -65,8 +68,8 @@ def update_helper(urls):
         db = db_connect()
         cursor = db.cursor()
 
-        # Generate our query escaping the URLs. From my reading much faster than
-        # using execute many and having it prepare the query.
+        # Generate our query escaping the URLs. From my reading much faster
+        # than using execute many and having it prepare the query.
         query = 'INSERT INTO url_table (url) VALUES '
         url_split = urls.split(',')
         for url in url_split:
