@@ -70,7 +70,8 @@ def update_helper(urls):
         query = 'INSERT INTO url_table (url) VALUES '
         url_split = urls.split(',')
         for url in url_split:
-            query += "('%s')" % db.escape_string(url).decode("utf-8")
+            # note need to conver the byte string
+            query += "('%s')," % db.escape_string(url).decode("utf-8")
 
         # drop trailing ,
         query = query[:-1]
