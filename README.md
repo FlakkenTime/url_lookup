@@ -6,9 +6,13 @@ to see if it is black listed.
 
 ## Install
 pip3 install mysqlclient
+
 pip3 install flask
+
 pip3 install gunicorn
+
 pip3 install pytest
+
 pip3 install configparser
 
 ## Config
